@@ -22,7 +22,7 @@ This branch/clone/whatever git calls it of the official Facebook GUI does a few 
   etc.).
 * For tips on including prepend.php on an nginx + php-fpm install take a look at: http://www.justincarmony.com/blog/2012/04/23/php-fpm-nginx-php_value-and-multiple-values/
 * The GUI is a bit prettier (Thanks to Graham Slater)
-* It uses a MySQL backend, the database table is available in sql\install.php 
+* It uses a MySQL backend, the database table is available in sql/install.sql
 * There's a frontend to view different runs, compare runs to the same url, etc.
 
 Key features include:
