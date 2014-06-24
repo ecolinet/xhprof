@@ -6,21 +6,23 @@ This is a graphical front end designed to store and present the profiling inform
 
 Related Tools:
 
+* [XHProf](preinheimer/xhprof) - Original version from Paul Reinheimer
 * [XHGui](https://github.com/perftools/xhgui) - Uses MongoDB as a backend (rather than MySQL)
 * [XHProf.io](http://xhprof.io/) - Uses MySQL backend, more normalized storage schema 
 
 
 This branch/clone/whatever git calls it of the official Facebook GUI does a few things:
 
-* It includes a header.php document you can use with PHP's 
-  auto\_prepend\_file directive. It sets up profiling by initilizing a few variables, and settting register_shutdown_function with the footer. Once started profiles are done 
+* Removes the extension and only provide the script & IHM part
+* It includes a prepend.php script you can use with PHP's 
+  auto\_prepend\_file directive. It sets up profiling by initilizing a few variables. Once started profiles are done 
   when requested (?\_profile=1), or randomly. Profiled pages display a link to 
   their profile results at the bottom of the page (this can be disabled on a 
   blacklist based for specific documents. e.g. pages generating XML, images, 
   etc.).
-* For tips on including header.php on an nginx + php-fpm install take a look at: http://www.justincarmony.com/blog/2012/04/23/php-fpm-nginx-php_value-and-multiple-values/
+* For tips on including prepend.php on an nginx + php-fpm install take a look at: http://www.justincarmony.com/blog/2012/04/23/php-fpm-nginx-php_value-and-multiple-values/
 * The GUI is a bit prettier (Thanks to Graham Slater)
-* It uses a MySQL backend, the database schema is stored in xhprof\_runs.php 
+* It uses a MySQL backend, the database table is available in sql\install.php 
 * There's a frontend to view different runs, compare runs to the same url, etc.
 
 Key features include:
