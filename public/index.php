@@ -7,9 +7,9 @@ if (!defined('XHPROF_LIB_ROOT')) {
 require_once XHPROF_LIB_ROOT . '/display/xhprof.php';
 require_once XHPROF_LIB_ROOT . "/utils/common.php";
 
-$_xhprof = include XHPROF_LIB_ROOT . "/config.php";
+include XHPROF_LIB_ROOT . "/config.php";
 
-if (false !== $_xhprof['controlIPs'] && ! in_array($_SERVER['REMOTE_ADDR'], $_xhprof['controlIPs'])) {
+if (false !== $controlIPs && ! in_array($_SERVER['REMOTE_ADDR'], $controlIPs)) {
     die("You do not have permission to view this page.");
 }
 
