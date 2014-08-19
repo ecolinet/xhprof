@@ -14,10 +14,11 @@ include XHPROF_LIB_ROOT . '/config.php';
 if ($controlIPs === false || in_array($_SERVER['REMOTE_ADDR'], $controlIPs) || PHP_SAPI == 'cli') {
     if (isset($_GET['_profile'])) {
         // Give them a cookie to hold status, and redirect back to the same page
-        setcookie('_profile', $_GET['_profile']);
+		$cookievalue = (empty($_GET['_profile'])) ? 1 : $_GET['_profile'];
+        setcookie('_profile', $cookievalue);
     }
     
-    if (isset($_COOKIE['_profile']) && $_COOKIE['_profile'] || PHP_SAPI == 'cli' && ((isset($_SERVER['XHPROF_PROFILE']) && $_SERVER['XHPROF_PROFILE']) || (isset($_ENV['XHPROF_PROFILE']) && $_ENV['XHPROF_PROFILE']))) {
+    if (isset($_COOKIE['_profile']) || PHP_SAPI == 'cli' && ((isset($_SERVER['XHPROF_PROFILE']) && $_SERVER['XHPROF_PROFILE']) || (isset($_ENV['XHPROF_PROFILE']) && $_ENV['XHPROF_PROFILE']))) {
         $_xhprof['doprofile'] = true;
         $_xhprof['type'] = 1;
     }
