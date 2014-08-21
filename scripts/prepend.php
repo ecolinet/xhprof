@@ -12,13 +12,31 @@ include XHPROF_LIB_ROOT . '/config.php';
 
 // Only users from authorized IP addresses may control Profiling
 if ($controlIPs === false || in_array($_SERVER['REMOTE_ADDR'], $controlIPs) || PHP_SAPI == 'cli') {
-    if (isset($_GET['_profile'])) {
-        // Give them a cookie to hold status, and redirect back to the same page
-		$cookievalue = (empty($_GET['_profile'])) ? 1 : $_GET['_profile'];
-        setcookie('_profile', $cookievalue);
-    }
-    
-    if (isset($_COOKIE['_profile']) || PHP_SAPI == 'cli' && ((isset($_SERVER['XHPROF_PROFILE']) && $_SERVER['XHPROF_PROFILE']) || (isset($_ENV['XHPROF_PROFILE']) && $_ENV['XHPROF_PROFILE']))) {
+
+	$cookievalue = false;
+	$stop = false;
+	
+	if (	isset($_GET['_profile'])
+		&&	($_GET['_profile'] != '0' || empty($_GET['_profile']))
+	) {
+		$cookievalue = time() + 3600;
+	}
+
+    if (	isset($_GET['_profile'])
+		&& 	$_GET['_profile'] == '0'
+	) {
+		$cookievalue = time() - 3600;
+		$stop = true;
+	}
+	
+	if ($cookievalue !== false) {
+		setcookie('_profile', $cookievalue);
+	}
+	
+	if (	((isset($_COOKIE['_profile']) && $_COOKIE['_profile'] > time())
+		||	($cookievalue !== false && $cookievalue > time()))
+		&&	$stop === false
+	) {
         $_xhprof['doprofile'] = true;
         $_xhprof['type'] = 1;
     }
