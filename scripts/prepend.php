@@ -31,7 +31,6 @@ foreach ($_xhprof['exceptionPostURLs'] as $url) {
         break;
     }
 }
-unset($exceptionPostURLs);
 
 // Determine wether or not to profile this URL randomly
 if ($_xhprof['doprofile'] === false) {
@@ -41,7 +40,6 @@ if ($_xhprof['doprofile'] === false) {
         $_xhprof['type'] = 0;
     }
 }
-unset($weight);
 
 // Certain URLS should never be profiled.
 foreach ($_xhprof['ignoreURLs'] as $url) {
@@ -50,7 +48,6 @@ foreach ($_xhprof['ignoreURLs'] as $url) {
         break;
     }
 }
-unset($ignoreURLs);
 
 unset($url);
 
@@ -61,7 +58,6 @@ foreach ($_xhprof['ignoreDomains'] as $domain) {
         break;
     }
 }
-unset($ignoreDomains);
 unset($domain);
 
 // Display warning if extension not available
