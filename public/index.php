@@ -5,7 +5,7 @@ if (!defined('XHPROF_LIB_ROOT')) {
 }
 
 require_once XHPROF_LIB_ROOT . '/display/xhprof.php';
-require_once XHPROF_LIB_ROOT . "/utils/common.php";
+require_once XHPROF_LIB_ROOT . '/utils/common.php';
 
 $_xhprof = include XHPROF_LIB_ROOT . "/config.php";
 
