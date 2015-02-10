@@ -1303,7 +1303,7 @@ function displayXHProfReport($xhprof_runs_impl, $url_params, $source, $run, $wts
         }
 }
 
-
+/*
 function _aggregateCalls($calls, $rules = null)
 {
     global $run_details;
@@ -1340,3 +1340,4 @@ function _aggregateCalls($calls, $rules = null)
     }
     return array_merge($addIns, $calls);
 }
+*/
