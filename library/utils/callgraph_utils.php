@@ -132,7 +132,7 @@ function xhprof_generate_image_by_dot($dot_script, $type)
         )
     );
     
-    $cmd = ' "' . $dotBinary . '" -T' . $type;
+    $cmd = '"' . $dotBinary . '" -T' . $type;
     
     $process = proc_open($cmd, $descriptorspec, $pipes, $tmpDirectory, array());
     
